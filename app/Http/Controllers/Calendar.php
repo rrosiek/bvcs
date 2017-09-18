@@ -25,5 +25,5 @@ class Calendar extends Controller
         return view('calendar', compact(
             'title', 'current', 'nextMonth', 'prevMonth', 'ref', 'events'
         ));
-    } 
+    }
 }

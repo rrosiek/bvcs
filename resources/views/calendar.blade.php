@@ -50,7 +50,7 @@
                     <p class="has-text-centered">SATURDAY</p>
                 </div>
             </div>
-            @while ($ref->month <= $current->month)
+            @while ($ref->diffInMonths($current) < 1)
                 <div class="columns week">
                 @for ($i = 0; $i < $ref::DAYS_PER_WEEK; $i++)
                     <div class="column day">
