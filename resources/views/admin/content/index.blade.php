@@ -37,6 +37,9 @@
                             <p class="control has-addons is-hover-visible">
                                 <a href="{{ route('content.edit', $c) }}" class="button">Edit</a>
                                 <button class="button" type="submit">Delete</button>
+                                @if ($c->type === 'newsletter')
+                                    <a href="{{ route('mail.newsletter', ['id' => $c->id]) }}" class="button">E-Mail</a>
+                                @endif
                             </p>
                         </form>
                     </td>

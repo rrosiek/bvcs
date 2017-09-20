@@ -1,15 +1,11 @@
 <?php
-namespace Bvcs;
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-final class Member extends Model
+class Member extends Model
 {
-    /**
-     * @var string
-     */
-    protected $table = 'members';
-
     /**
      * @var array
      */
@@ -17,6 +13,6 @@ final class Member extends Model
         'email',
         'last_name',
         'first_name',
-        'is_active',
+        'subscribed',
     ];
 }
