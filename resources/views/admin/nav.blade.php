@@ -3,6 +3,9 @@
         <li class="{{ starts_with(Route::currentRouteName(), 'content') ? 'is-active' : '' }}">
             <a href="{{ route('content.index') }}">Content</a>
         </li>
+        <li class="{{ starts_with(Route::currentRouteName(), 'members') ? 'is-active' : '' }}">
+            <a href="{{ route('members.index') }}">Members</a>
+        </li>
         <li class="{{ starts_with(Route::currentRouteName(), 'events') ? 'is-active' : '' }}">
             <a href="{{ route('events.index') }}">Events</a>
         </li>

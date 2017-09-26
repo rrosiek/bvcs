@@ -6,7 +6,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resource('content', 'Content');
     Route::resource('events', 'Event');
-    Route::resource('mail', 'Mail', ['only' => ['create', 'store']]);
+    Route::resource('mail', 'Correspondence', ['only' => ['create', 'store']]);
+    Route::resource('members', 'Member', ['except' => ['show']]);
 
     Route::get('content/{id}/mail', 'Correspondence@createNewsletter')->name('mail.newsletter');
     Route::post('content/{id}/mail', 'Correspondence@sendNewsletter')->name('mail.newsletter');
