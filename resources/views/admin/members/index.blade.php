@@ -12,6 +12,9 @@
                 <p class="level-item">
                     <a href="{{ route('members.create') }}" class="button is-primary">Add Member</a>
                 </p>
+                <p class="level-item">
+                    <a href="{{ route('mail.create') }}" class="button is-primary">E-mail Members</a>
+                </p>
             </div>
             <div class="level-right">
                 {{ $members->links() }}
