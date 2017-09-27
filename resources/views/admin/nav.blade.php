@@ -10,7 +10,16 @@
             <a href="{{ route('events.index') }}">Events</a>
         </li>
         <li>
-            <a href="{{ route('logout') }}">Logout</a>
+            <a
+                href="{{ route('logout') }}"
+                onclick="event.preventDefault();document.getElementById('logout-frm').submit();"
+            >
+                Logout
+            </a>
         </li>
     </ul>
 </div>
+
+<form action="{{ route('logout') }}" id="logout-frm" method="post" style="display: none;">
+    {{ csrf_field() }}
+</form>
