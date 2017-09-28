@@ -39,6 +39,7 @@ class Member extends Controller
         $attributes = $request->validate([
             'first_name' => ['required', 'max:255'],
             'last_name' => ['required', 'max:255'],
+            'address' => ['max:255'],
             'email' => ['required', 'email'],
         ]);
 
@@ -72,6 +73,7 @@ class Member extends Controller
         $attributes = $request->validate([
             'first_name' => ['required', 'max:255'],
             'last_name' => ['required', 'max:255'],
+            'address' => ['max:255'],
             'email' => ['required', 'email'],
         ]);
 

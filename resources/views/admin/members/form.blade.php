@@ -13,6 +13,11 @@
 </div>
 <div class="columns">
     <div class="column is-half">
+        @include('partials.textInput', ['name' => 'address', 'label' => 'Address', 'value' => $member->address])
+    </div>
+</div>
+<div class="columns">
+    <div class="column is-half">
         @include('partials.checkboxInput', ['name' => 'subscribed', 'label' => 'Subscribed', 'value' => $member->subscribed])
     </div>
 </div>

@@ -13,6 +13,7 @@ class Member extends Model
         'email',
         'last_name',
         'first_name',
+        'address',
         'subscribed',
     ];
 }
