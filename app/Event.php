@@ -58,7 +58,7 @@ class Event extends Model
     {
         $event = new static();
         $begin = Carbon::createFromDate($limit->year, $limit->month, 1);
-        $end = Carbon::createFromDate($limit->year, $limit->month, $limit->daysInMonth);
+        $end = Carbon::createFromDate($limit->year, $limit->month, $limit->daysInMonth)->addDay();
 
         return $event->allEvents($event)->filter(function ($e) use ($begin, $end) {
             return $e['start']->between($begin, $end);
