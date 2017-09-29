@@ -53,7 +53,7 @@ class Event extends Controller
             'frequency' => ['nullable', 'in:DAILY,WEEKLY,MONTHLY'],
             'by_day' => ['nullable', 'in:' . implode(",", array_keys(config('custom.days')))],
             'interval' => ['nullable', 'integer'],
-            'set_position' => ['nullable', 'integer'],
+            'by_set_pos' => ['nullable', 'integer'],
             'until' => ['required_with:frequency'],
         ]);
 
@@ -97,7 +97,7 @@ class Event extends Controller
             'frequency' => ['nullable', 'in:DAILY,WEEKLY,MONTHLY'],
             'by_day' => ['nullable', 'in:' . implode(",", array_keys(config('custom.days')))],
             'interval' => ['nullable', 'integer'],
-            'set_position' => ['nullable', 'integer'],
+            'by_set_pos' => ['nullable', 'integer'],
             'until' => ['required_with:frequency'],
         ]);
 

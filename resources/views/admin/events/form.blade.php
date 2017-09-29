@@ -61,7 +61,7 @@
         <p><em>The interval between each frequency iteration.  For example, when using monthly, an interval of 2 means once every two months.</em></p>
     </div>
     <div class="column">
-        @include('partials.textInput', ['name' => 'set_position', 'label' => 'Set Position', 'value' => $event->set_position])
+        @include('partials.textInput', ['name' => 'by_set_pos', 'label' => 'Set Position', 'value' => $event->by_set_pos])
         <p><em>The Nth occurrence(s) inside the frequency period.  For example, a frequency of monthly, by day of Tuesday, and a Set Position of 3 will create an event on the third Tuesday of every month.</em></p>
     </div>
 </div>
