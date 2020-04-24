@@ -1,4 +1,3 @@
-.DS_Store
 /node_modules
 /public/css
 /public/hot
@@ -8,9 +7,9 @@
 /storage/*.key
 /vendor
 /.idea
-/.vagrant
-Homestead.json
-Homestead.yaml
+.DS_Store
+.env
+.env.backup
+.phpunit.result.cache
 npm-debug.log
 yarn-error.log
-.env
