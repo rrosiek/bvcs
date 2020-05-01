@@ -1,5 +1,9 @@
 FROM php:7.4-cli
 
+ARG app_env
+
+WORKDIR /var/log/supervisor
+
 RUN apt-get update && apt-get install -y \
     build-essential libzip-dev libpng-dev libjpeg62-turbo-dev \
     libfreetype6-dev locales zip jpegoptim optipng pngquant gifsicle \
@@ -7,16 +11,18 @@ RUN apt-get update && apt-get install -y \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    mkdir /app
-
-RUN docker-php-ext-install gd zip exif pcntl
-
-WORKDIR /var/log/supervisor
-
-RUN groupadd -g 1000 worker && \
+    mkdir /app && \
+    \
+    docker-php-ext-install gd zip exif pcntl pdo_mysql && \
+    \
+    groupadd -g 1000 worker && \
     useradd -u 1000 -ms /bin/bash -g worker worker && \
-    chown worker:worker /var/log/supervisor
-
-COPY --chown=worker:worker . /app
+    chown worker:worker /var/log/supervisor && \
+    \
+    if [ $app_env = "production" ]; then \
+        cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini; \
+    else \
+        cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini; \
+    fi
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisor/supervisord.conf"]

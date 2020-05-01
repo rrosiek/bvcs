@@ -1,5 +1,7 @@
 FROM php:7.4-fpm
 
+ARG app_env
+
 WORKDIR /var/www
 
 RUN apt-get update && apt-get install -y \
@@ -8,15 +10,20 @@ RUN apt-get update && apt-get install -y \
     vim unzip git curl && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN docker-php-ext-install gd zip exif pcntl
-
-RUN groupadd -g 1000 www && \
-    useradd -u 1000 -ms /bin/bash -g www www
+    rm -rf /var/lib/apt/lists/* && \
+    \
+    docker-php-ext-install gd zip exif pcntl pdo_mysql && \
+    \
+    groupadd -g 1000 www && \
+    useradd -u 1000 -ms /bin/bash -g www www && \
+    \
+    if [ $app_env = "production" ]; then \
+        cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini; \
+    else \
+        cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini; \
+    fi
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY --chown=www:www . /var/www
 
 USER www
 EXPOSE 9000

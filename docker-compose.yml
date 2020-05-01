@@ -6,11 +6,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-app
+      args:
+        app_env: ${APP_ENV}
     restart: unless-stopped
     tty: true
-    working_dir: /var/www
-    env_file:
-      - ./.env
     depends_on:
       - db
     volumes:
@@ -21,6 +20,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-worker
+      args:
+        app_env: ${APP_ENV}
     restart: unless-stopped
     depends_on:
       - db

@@ -7,7 +7,7 @@
         </span>
         <div :class="{ 'is-active': mobileNav }" class="nav-right nav-menu">
             <a
-                class="nav-item {{ starts_with(Route::currentRouteName(), 'home') ? 'is-active' : '' }}"
+                class="nav-item {{ Str::startsWith(Route::currentRouteName(), 'home') ? 'is-active' : '' }}"
                 href="{{ route('home') }}"
             >
                 HOME
